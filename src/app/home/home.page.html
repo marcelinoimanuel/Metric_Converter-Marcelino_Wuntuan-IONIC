@@ -1,0 +1,86 @@
+<ion-content [fullscreen]="true">
+
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title>
+        Metric Converter
+      </ion-title>
+      <ion-label> <br> <br> by: Marcelino Wuntuan</ion-label>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-card>
+    <ion-item>
+      <ion-select 
+        label="Choose Metric" 
+        label-placement="floating" 
+        interface="action-sheet"
+        (ionChange)="handleChange($event)"  
+      > 
+        <ion-select-option *ngFor="let metric of metrics" [value]="metric"> {{ metric.name }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-card>
+
+
+  <ion-card>
+    <p>From :</p>
+    <ion-item>
+      <ion-select 
+        label="-- Pilih Satuan --"
+        label-placement="floating"
+        [disabled]="checkInput"
+        interface="action-sheet"
+        (ionChange)="getMetricIndex1($event)"
+      >
+        <ion-select-option 
+        *ngFor='let metric of (checkPrincipalAmount == "Panjang" ? lengths : checkPrincipalAmount == "Massa" ? mass : checkPrincipalAmount == "Waktu" ? time : checkPrincipalAmount == "Arus listrik" ? electric_current : temperature)' 
+        [value]="metric"
+        > 
+          {{ metric.name }} 
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-card>
+
+
+  <ion-card>
+    <p>To :</p>
+    <ion-item>
+      <ion-select 
+        label="-- Pilih Satuan --" 
+        label-placement="floating" 
+        [disabled]="checkInput"
+        interface="action-sheet"
+        (ionChange)="getMetricIndex2($event)"
+      >
+        <ion-select-option 
+          *ngFor='let metric of (checkPrincipalAmount == "Panjang" ? lengths : checkPrincipalAmount == "Massa" ? mass : checkPrincipalAmount == "Waktu" ? time : checkPrincipalAmount == "Arus listrik" ? electric_current : temperature)' 
+          [value]="metric"
+        > 
+          {{ metric.name }} 
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    </ion-card>
+  
+  <ion-card>
+    <ion-item>
+      <ion-input 
+        label="Input Value :" 
+        type="number"
+        labelPlacement="floating"
+        (ionChange)="calculateResult($event)"
+      >
+      </ion-input>
+    </ion-item>
+  </ion-card>
+
+
+  <ion-card>
+    <ion-item>
+      <ion-input label="Output    :" [readonly]="true" value="{{ result }}"></ion-input>
+    </ion-item>
+  </ion-card>
+
+</ion-content>

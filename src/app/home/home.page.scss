@@ -1,0 +1,27 @@
+ion-toolbar {
+  padding: 2rem;
+}
+
+ion-title {
+  // font-size: large;
+  justify-content: left;
+}
+
+ion-content {
+  --ion-background-color: rgba(20, 20, 61, 0.658);
+  --ion-text-color: #cdd6f4;
+}
+
+ion-header {
+  text-align: center;
+}
+
+p {
+  color: #bac2de;
+  padding-left: 1rem;
+}
+
+ion-card {
+  padding: 1rem;
+  background-color: black;
+}

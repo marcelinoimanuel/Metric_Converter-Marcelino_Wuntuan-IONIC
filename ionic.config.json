@@ -1,0 +1,7 @@
+{
+  "name": "metric",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
